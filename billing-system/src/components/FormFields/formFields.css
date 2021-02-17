@@ -1,0 +1,21 @@
+.form-row{
+    margin: 5px 0;
+}
+
+.form-label{
+    width: 200px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.form-input{
+    width: 300px;
+}
+
+.form-buttons{
+    padding: 10px;
+}
+
+.form-buttons button{
+    margin: 10px;
+}
