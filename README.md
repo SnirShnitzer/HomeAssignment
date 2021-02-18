@@ -1,13 +1,14 @@
-##Personal notes:
+##Personal notes:##
 - I don't have a lot of experience creating docker, so i preferred provding the project on github with manual run.
 - In order to activate the google maps feature, I've send the .env file that contains the Google Api key on the mail.
 
 
-##Pre Requirements:
+##Pre Requirements:##
 - Node.js: https://nodejs.org/en/
 - MongoDB: https://www.mongodb.com/try/download/community
 
-#How to run:
+
+#How to run:##
 Run api:
 - open cmd
 - cd api
@@ -23,7 +24,7 @@ Run site:
 
 
 
-#Recommended Scheme for this data:
+##Recommended Scheme for this data:##
 
 Customer
 - customer_id (int) - save only numbers
@@ -88,7 +89,7 @@ Customer_Credit_Cards Table
 
 
 
-#TODO: (optional features to add)
+##TODO: (optional features to add)##
 - Add fitlering to the tables
 - Add lazy load / paging to the tables
 - Get address from google
