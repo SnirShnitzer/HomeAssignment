@@ -5,14 +5,17 @@ import { NotificationManager } from 'react-notifications'
 import TransactionService from '../../services/TransactionService'
 import { getDateTimeString } from '../../utils/FunctionsUtils'
 import RoutingUtils from '../../utils/RoutingUtils.js'
+import Loader from "react-loader"
 
 const TransactionList = () => {
+    const [loaded, setloaded] = useState(false)
     const [transactions, setTransactions] = useState([])
 
     useEffect (() => {
         TransactionService.getAll()
         .then(response => {
           setTransactions(response.data)
+          setloaded(true)
         })
         .catch(e => {
             console.log(e);
@@ -22,8 +25,11 @@ const TransactionList = () => {
     const DeleteTransacion = (id) =>{
         if(window.confirm('Are you sure you want to delete the transaction?')){
             TransactionService.remove(id)
-            .then(response => {
-                NotificationManager.success('Transaction Delete Success');       
+            .then(response => { 
+                let newList = transactions.filter(item => item._id !== id)                
+                setTransactions([...newList])
+                
+                NotificationManager.success('Transaction Delete Success');    
               })
               .catch(e => {
                  NotificationManager.error("Transaction Delete Failed");
@@ -66,31 +72,35 @@ const TransactionList = () => {
             <Link to={RoutingUtils.Transaction.Create} className="create-link">
                 Create new transaction
             </Link>
-            {
-                (transactions && transactions.length > 0) ?
-                <table className="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>Transaction Id</th>
-                        <th>Customer Id</th>
-                        <th>Full name</th>                    
-                        <th>Email</th>
-                        <th>Total Price</th>
-                        <th>Transaction Date</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            transactions.map((tran) => TranRow(tran))
-                        }
-                    </tbody>
-                </table>
-                : 
-                <p>There are no Transactions</p>
-            }
+            <Loader loaded={loaded}>
+                <div>
+                {         
+                        (transactions && transactions.length > 0) ?
+                        <table className="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Transaction Id</th>
+                                <th>Customer Id</th>
+                                <th>Full name</th>                    
+                                <th>Email</th>
+                                <th>Total Price</th>
+                                <th>Transaction Date</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    transactions.map((tran) => TranRow(tran))
+                                }
+                            </tbody>
+                        </table>
+                        : 
+                        <p>There are no Transactions</p>
+                }
+                </div>
+            </Loader>
         </div>
     )
 }

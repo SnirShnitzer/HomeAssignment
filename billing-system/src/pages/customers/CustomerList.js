@@ -4,14 +4,17 @@ import { Button } from "react-bootstrap";
 import { NotificationManager } from 'react-notifications'
 import CustomerService from '../../services/CustomerService'
 import RoutingUtils from '../../utils/RoutingUtils'
+import Loader from "react-loader"
 
 const CustomerList = () => {
+    const [loaded, setloaded] = useState(false)
     const [customers, setCustomers] = useState([])
 
     useEffect (() => {
         CustomerService.getAll()
         .then(response => {
           setCustomers(response.data)
+          setloaded(true)
         })
         .catch(e => {
             console.log(e);
@@ -22,6 +25,8 @@ const CustomerList = () => {
         if(window.confirm('Are you sure you want to delete the customer?')){
             CustomerService.remove(id)
             .then(response => {
+                let newList = customers.filter(item => item._id !== id)                
+                setCustomers([...newList])
                 NotificationManager.success('Customer Delete Success');       
               })
               .catch(e => {
@@ -70,30 +75,34 @@ const CustomerList = () => {
             <Link to={RoutingUtils.Customer.Create} className="create-link">
                 Create new customer
             </Link>            
-            {
-                (customers && customers.length > 0) ?
-                <table className="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>Identifier</th>
-                        <th>Customer Id</th>
-                        <th>Full name</th>                    
-                        <th>Email</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            customers.map((tran) => CustomerRow(tran))
-                        }
-                    </tbody>
-                </table>
-                : 
-                <p>There are no Customers</p>
-            }
+            <Loader loaded={loaded}>
+                <div>
+                {
+                    (customers && customers.length > 0) ?
+                    <table className="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Identifier</th>
+                            <th>Customer Id</th>
+                            <th>Full name</th>                    
+                            <th>Email</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                customers.map((tran) => CustomerRow(tran))
+                            }
+                        </tbody>
+                    </table>
+                    : 
+                    <p>There are no Customers</p>
+                }
+                </div>
+            </Loader>
         </div>
     )
 }

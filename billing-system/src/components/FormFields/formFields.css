@@ -12,6 +12,12 @@
     width: 300px;
 }
 
+.form-error { 
+    color: red;
+    display: inline-block;
+    margin-left: 10px;
+}
+
 .form-buttons{
     padding: 10px;
 }
