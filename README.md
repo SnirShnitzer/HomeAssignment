@@ -17,6 +17,7 @@ Run site:
 - npm start
 
 
+
 #Recommended Scheme for this data:
 
 Customer
@@ -78,3 +79,13 @@ Credit_Card_Type Table
 Customer_Credit_Cards Table
 - customer_id (int)
 - credit_card_id (int)
+
+
+
+
+#TODO: (optional features to add)
+- Add fitlering to the tables
+- Add lazy load / paging to the tables
+- Get address from google
+- Add Select to the form for gender and credit card type
+- Add more validations to the form (phone, email and more)
