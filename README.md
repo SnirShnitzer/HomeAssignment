@@ -1,7 +1,17 @@
+#Pre Requirements:
+- Node.js
+- MongoDB
+
+#How to run:
+- cd to billing-system project
+- npm install
+- npm start
+
+- cd to api
+- node server.js
 
 
-
-Recommended Scheme for this data:
+#Recommended Scheme for this data:
 
 Customer
 - customer_id (int) - save only numbers
