@@ -1,6 +1,6 @@
 #Pre Requirements:
-- Node.js
-- MongoDB
+- Node.js: https://nodejs.org/en/
+- MongoDB: https://www.mongodb.com/try/download/community
 
 #How to run:
 Run api:
