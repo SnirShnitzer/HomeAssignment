@@ -1,8 +1,20 @@
-FROM node:12.18-alpine
-ENV NODE_ENV=production
-WORKDIR /usr/src/app
-COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
-RUN npm install --production --silent && mv node_modules ../
-COPY . .
-EXPOSE 3000
+# pull official base image
+FROM node:13.12.0-alpine
+
+# set working directory
+WORKDIR /billing-system
+
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /billing-system/node_modules/.bin:$PATH
+
+# install app dependencies
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
+RUN npm install react-scripts@4.0.2 -g --silent
+
+# add app
+COPY . ./
+
+# start app
 CMD ["npm", "start"]

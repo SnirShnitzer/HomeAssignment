@@ -1,3 +1,11 @@
 
 .vscode/launch.json
 .vscode/tasks.json
+Dockerfile
+docker-compose.yml
+billing-system/Dockerfile
+billing-system/.dockerignore
+api/Dockerfile
+api/.dockerignore
+.dockerignore
+billing-system/Dockerfile
