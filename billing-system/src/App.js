@@ -1,6 +1,6 @@
 import './App.css'
 import Navbar from './layout/Navbar'
-import Main from './layout/Main'
+import RouteConfig from './navigation/RouteConfig'
 import { NotificationContainer } from 'react-notifications'
 import Geocode from "react-geocode";
 
@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Main />
+      <RouteConfig />
       <NotificationContainer />
     </div>
   );

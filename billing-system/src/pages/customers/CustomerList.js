@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { NotificationManager } from 'react-notifications'
 import CustomerService from '../../services/CustomerService'
-import RoutingUtils from '../../Utils/RoutingUtils'
+import RoutingUtils from '../../utils/RoutingUtils'
 
 const CustomerList = () => {
     const [customers, setCustomers] = useState([])

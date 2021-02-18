@@ -1,18 +1,18 @@
 import React from 'react'
 import { Form } from 'react-final-form'
 import { useHistory } from 'react-router-dom';
-import TextField from '../FormFields/TextField'
-import FormButtons from '../FormFields/FormButtons'
+import TextField from '../../components/formFields/TextField'
+import FormButtons from '../../components/formFields/FormButtons'
 import CustomerService from '../../services/CustomerService'
 import { NotificationManager } from 'react-notifications'
-import RoutingUtils from '../../Utils/RoutingUtils'
+import RoutingUtils from '../../utils/RoutingUtils'
 
 const CustomerForm = (props) => {
     let isUpdate = props.isUpdate
     let initialValues = props.initialValues    
     const history = useHistory()   
 
-    const onSubmit = async values => {  
+    const onSubmit = values => {  
         if(isUpdate) {
             CustomerService.update(initialValues._id, values)
             .then(response => {
@@ -26,8 +26,7 @@ const CustomerForm = (props) => {
             CustomerService.create(values)
             .then(response => {
                 NotificationManager.success("Customer Create Success");
-
-                setTimeout(() => { history.push(RoutingUtils.Customer.Edit(response.data._id)) }, 1000)
+                history.push(RoutingUtils.Customer.Edit(response.data._id))
             })
             .catch(e => {
                 NotificationManager.error("Customer Create Failed");

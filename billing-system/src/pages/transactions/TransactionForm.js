@@ -1,18 +1,18 @@
 import React from 'react'
 import { Form } from 'react-final-form'
 import { useHistory } from 'react-router-dom';
-import TextField from '../FormFields/TextField'
-import FormButtons from '../FormFields/FormButtons'
+import TextField from '../../components/formFields/TextField'
+import FormButtons from '../../components/formFields/FormButtons'
 import TransactionService from '../../services/TransactionService'
 import { NotificationManager } from 'react-notifications'
-import RoutingUtils from '../../Utils/RoutingUtils'
+import RoutingUtils from '../../utils/RoutingUtils'
 
 const TransactionForm = (props) => {
     let isUpdate = props.isUpdate
     let initialValues = props.initialValues 
     const history = useHistory()   
 
-    const onSubmit = async values => {  
+    const onSubmit = values => {  
         if(isUpdate) {
             TransactionService.update(initialValues._id, values)
             .then(response => {
@@ -26,8 +26,7 @@ const TransactionForm = (props) => {
             TransactionService.create(values)
             .then(response => {                
                 NotificationManager.success("Transaction Create Success");   
-                
-                setTimeout(() => { history.push(RoutingUtils.Transaction.Edit(response.data._id)) }, 1000)
+                history.push(RoutingUtils.Transaction.Edit(response.data._id))
             })
             .catch(e => {
                 NotificationManager.error("Transaction Create Failed");

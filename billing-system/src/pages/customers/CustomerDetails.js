@@ -8,7 +8,7 @@ const CustomerDetails = (props) => {
     const [center, setCenter] = useState(null)
     const [zoom, setZoom] = useState(18)
 
-    useEffect(()=>{
+    useEffect(() => {
         if(data){
             getCustomerAddress(data.country, data.city, data.street)
         }

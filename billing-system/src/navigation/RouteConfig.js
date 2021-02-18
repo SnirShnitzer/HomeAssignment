@@ -1,18 +1,18 @@
 
 import React from 'react'
 import { Switch, Route } from "react-router-dom";
-import Home from '../components/Home'
-import TransactionList from '../components/Transactions/TransactionList'
-import TransactionDetails from '../components/Transactions/TransactionDetails'
-import TransactionCreate from '../components/Transactions/TransactionCreate'
-import TransactionEdit from '../components/Transactions/TransactionEdit'
-import CustomerList from '../components/Customers/CustomerList'
-import CustomerDetails from '../components/Customers/CustomerDetails'
-import CustomerEdit from '../components/Customers/CustomerEdit'
-import CustomerCreate from '../components/Customers/CustomerCreate'
-import RoutingUtils from '../Utils/RoutingUtils.js'
+import Home from '../pages/Home'
+import TransactionList from '../pages/transactions/TransactionList'
+import TransactionDetails from '../pages/transactions/TransactionDetails'
+import TransactionCreate from '../pages/transactions/TransactionCreate'
+import TransactionEdit from '../pages/transactions/TransactionEdit'
+import CustomerList from '../pages/customers/CustomerList'
+import CustomerDetails from '../pages/customers/CustomerDetails'
+import CustomerEdit from '../pages/customers/CustomerEdit'
+import CustomerCreate from '../pages/customers/CustomerCreate'
+import RoutingUtils from '../utils/RoutingUtils.js'
 
-const Main = () => {
+const RouteConfig = () => {
   
     return (
             <div className="container mt-3">
@@ -29,6 +29,6 @@ const Main = () => {
             </Switch>
         </div>
     );
-    }
+}
     
-    export default Main;
+export default RouteConfig;

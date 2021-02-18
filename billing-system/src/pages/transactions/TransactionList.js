@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { NotificationManager } from 'react-notifications'
 import TransactionService from '../../services/TransactionService'
-import { getDateTimeString } from '../../Utils/FunctionsUtils'
-import RoutingUtils from '../../Utils/RoutingUtils.js'
+import { getDateTimeString } from '../../utils/FunctionsUtils'
+import RoutingUtils from '../../utils/RoutingUtils.js'
 
 const TransactionList = () => {
     const [transactions, setTransactions] = useState([])

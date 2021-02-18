@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import RoutingUtils from '../Utils/RoutingUtils.js';
+import RoutingUtils from '../utils/RoutingUtils.js';
 
 const Navbar = () => {
   
