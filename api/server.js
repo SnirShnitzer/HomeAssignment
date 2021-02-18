@@ -35,6 +35,24 @@ async function initData() {
     if(transactionsCount === 0){     
         let data_with_timestamps = default_data.map( (item) => { return { ...item, createdAt: Date.now() } })        
         db.collection('transactions').insertMany([...data_with_timestamps ])
+
+
+        let customers = default_data.slice(0, 10).map( (item) => 
+            { 
+                return { 
+                    customer_id: item.customer_id,
+                    first_name: item.first_name,
+                    last_name: item.last_name,
+                    email: item.email,
+                    gender: item.gender,
+                    country: item.country,
+                    city: item.city,
+                    street: item.street,
+                    phone: item.phone,
+                    createdAt: Date.now()
+                 }
+            })
+        db.collection('customers').insertMany([...customers ])
     }
 }
 

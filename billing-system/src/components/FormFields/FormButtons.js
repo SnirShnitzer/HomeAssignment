@@ -1,11 +1,11 @@
 import React from 'react'
 import './formFields.css'
 
-const FormButtons = ({form, submitting, pristine}) => {
+const FormButtons = ({form, submitting, pristine, isUpdate}) => {
     return (
         <div className="form-buttons">
             <button type="submit" disabled={submitting || pristine}>
-                Submit
+                {isUpdate ? 'Submit' : 'Create'}
             </button>
             <button
                 type="button"

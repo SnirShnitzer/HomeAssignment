@@ -1,13 +1,16 @@
 import React from 'react'
 import { Form } from 'react-final-form'
+import { useHistory } from 'react-router-dom';
 import TextField from '../FormFields/TextField'
 import FormButtons from '../FormFields/FormButtons'
 import CustomerService from '../../services/CustomerService'
 import { NotificationManager } from 'react-notifications'
+import RoutingUtils from '../../Utils/RoutingUtils'
 
 const CustomerForm = (props) => {
     let isUpdate = props.isUpdate
     let initialValues = props.initialValues    
+    const history = useHistory()   
 
     const onSubmit = async values => {  
         if(isUpdate) {
@@ -23,6 +26,8 @@ const CustomerForm = (props) => {
             CustomerService.create(values)
             .then(response => {
                 NotificationManager.success("Customer Create Success");
+
+                setTimeout(() => { history.push(RoutingUtils.Customer.Edit(response.data._id)) }, 1000)
             })
             .catch(e => {
                 NotificationManager.error("Customer Create Failed");
@@ -30,7 +35,7 @@ const CustomerForm = (props) => {
         }
     }
 
-    return(
+    return(        
         <Form
             onSubmit={onSubmit}
             initialValues={{ ...initialValues }}
@@ -46,7 +51,7 @@ const CustomerForm = (props) => {
                     <TextField name="street" placeholder ="Street" />
                     <TextField name="phone" placeholder ="Phone" />       
 
-                    <FormButtons form={form} submitting={submitting} pristine={pristine} />
+                    <FormButtons form={form} submitting={submitting} pristine={pristine} isUpdate={isUpdate} />
                 </form>
         )}
         />

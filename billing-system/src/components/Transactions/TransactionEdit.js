@@ -19,6 +19,7 @@ const TransactionEdit = () => {
 
     return(
         <div className="edit-page">
+            <h2>Transaction Edit</h2>   
             {
                 data &&
                 <TransactionForm isUpdate={true} initialValues={data} />

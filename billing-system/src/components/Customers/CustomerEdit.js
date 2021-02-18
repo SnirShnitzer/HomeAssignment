@@ -19,6 +19,7 @@ const CustomerEdit = () => {
 
     return(
         <div className="edit-page">
+            <h2>Customer Edit</h2>
             {
                 data &&
                 <CustomerForm isUpdate={true} initialValues={data} />

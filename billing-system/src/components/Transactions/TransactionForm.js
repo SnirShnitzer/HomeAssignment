@@ -1,13 +1,16 @@
 import React from 'react'
 import { Form } from 'react-final-form'
+import { useHistory } from 'react-router-dom';
 import TextField from '../FormFields/TextField'
 import FormButtons from '../FormFields/FormButtons'
 import TransactionService from '../../services/TransactionService'
 import { NotificationManager } from 'react-notifications'
+import RoutingUtils from '../../Utils/RoutingUtils'
 
 const TransactionForm = (props) => {
     let isUpdate = props.isUpdate
-    let initialValues = props.initialValues    
+    let initialValues = props.initialValues 
+    const history = useHistory()   
 
     const onSubmit = async values => {  
         if(isUpdate) {
@@ -21,8 +24,10 @@ const TransactionForm = (props) => {
         }
         else{
             TransactionService.create(values)
-            .then(response => {
-                NotificationManager.success("Transaction Create Success");
+            .then(response => {                
+                NotificationManager.success("Transaction Create Success");   
+                
+                setTimeout(() => { history.push(RoutingUtils.Transaction.Edit(response.data._id)) }, 1000)
             })
             .catch(e => {
                 NotificationManager.error("Transaction Create Failed");
@@ -50,7 +55,7 @@ const TransactionForm = (props) => {
                     <TextField name="cerdit_card_type" placeholder ="Credit Card Type" />
                     <TextField name="cerdit_card_number" placeholder ="Credit Card Number" />          
 
-                    <FormButtons form={form} submitting={submitting} pristine={pristine} />
+                    <FormButtons form={form} submitting={submitting} pristine={pristine} isUpdate={isUpdate} />
                 </form>
         )}
         />

@@ -5,6 +5,7 @@ const CustomerCreate = () => {
 
     return(
         <div className="create-page">        
+            <h2>Customer Create</h2>
             <CustomerForm isUpdate={false} />            
         </div>
     )
