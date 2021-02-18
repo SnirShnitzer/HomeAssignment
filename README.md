@@ -3,12 +3,16 @@
 - MongoDB
 
 #How to run:
+Run api:
+- cd to api
+- npm install
+- node server.js
+
+Run site:
 - cd to billing-system project
 - npm install
 - npm start
 
-- cd to api
-- node server.js
 
 
 #Recommended Scheme for this data:
