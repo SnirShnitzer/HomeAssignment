@@ -1,4 +1,9 @@
-#Pre Requirements:
+##Personal notes:
+- I don't have a lot of experience creating docker, so i preferred provding the project on github with manual run.
+- In order to activate the google maps feature, I've send the .env file that contains the Google Api key on the mail.
+
+
+##Pre Requirements:
 - Node.js: https://nodejs.org/en/
 - MongoDB: https://www.mongodb.com/try/download/community
 
