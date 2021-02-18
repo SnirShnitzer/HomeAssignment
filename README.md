@@ -4,12 +4,14 @@
 
 #How to run:
 Run api:
-- cd to api
+- open cmd
+- cd api
 - npm install
 - node server.js
 
 Run site:
-- cd to billing-system project
+- open cmd
+- cd billing-system
 - npm install
 - npm start
 
