@@ -10,11 +10,11 @@ Run api:
 - node server.js
 
 Run site:
+- add .env to the project with the .env for the REACT_APP_GOOGLE_API_KEY
 - open cmd
 - cd billing-system
 - npm install
 - npm start
-
 
 
 #Recommended Scheme for this data:
